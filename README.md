@@ -1,5 +1,5 @@
-# `football_bidding` 
-> Naufal Zafran Fadil - 2406402542 -PBP F
+# `football_bidding`
+> Naufal Zafran Fadil - 2406402542 - PBP F
 
 *Bid exclusive football items here!*
 
@@ -38,3 +38,21 @@ Widget `MaterialApp` adalah widget root yang menyediakan konfigurasi dasar untuk
 ### 6. Jelaskan konsep "hot reload" di Flutter dan bagaimana bedanya dengan "hot restart".
 
 Hot reload adalah fitur Flutter yang memungkinkan pengembang untuk melihat perubahan kode secara instan tanpa kehilangan state aplikasi. Hot reload mempertahankan state aplikasi dan hanya memperbarui bagian yang berubah. Hot restart, di sisi lain, melakukan restart penuh aplikasi, yang berarti state aplikasi akan hilang dan aplikasi dimulai ulang dari awal. Hot reload lebih cepat dan berguna untuk perubahan UI, sedangkan hot restart diperlukan untuk perubahan struktural seperti perubahan main function atau perubahan yang mempengaruhi inisialisasi aplikasi.
+
+## Tugas 8: Flutter Navigation, Layouts, Forms, and Input Elements
+
+### 1. Jelaskan perbedaan antara `Navigator.push()` dan `Navigator.pushReplacement()` pada Flutter. Dalam kasus apa sebaiknya masing-masing digunakan pada aplikasi Football Shop kamu?
+
+`Navigator.push()` menambahkan halaman baru ke stack navigasi, sehingga pengguna dapat kembali ke halaman sebelumnya dengan tombol back. `Navigator.pushReplacement()` menggantikan halaman saat ini dengan halaman baru, sehingga halaman sebelumnya dihapus dari stack dan pengguna tidak dapat kembali ke sana. Pada aplikasi Football Shop, `Navigator.push()` digunakan ketika menekan tombol "Create Product" untuk membuka halaman form, karena pengguna mungkin ingin kembali ke halaman utama setelah selesai. `Navigator.pushReplacement()` bisa digunakan pada drawer navigation untuk "Home" jika kita ingin memastikan pengguna tidak bisa kembali ke halaman sebelumnya dengan back button, namun dalam kasus ini `Navigator.pop()` lebih sesuai untuk menutup drawer.
+
+### 2. Bagaimana kamu memanfaatkan hierarchy widget seperti `Scaffold`, `AppBar`, dan `Drawer` untuk membangun struktur halaman yang konsisten di seluruh aplikasi?
+
+`Scaffold` digunakan sebagai struktur dasar setiap halaman, menyediakan area untuk `AppBar`, `body`, dan `drawer`. `AppBar` memberikan judul halaman dan konsistensi visual di bagian atas. `Drawer` menyediakan navigasi lateral yang dapat diakses dari semua halaman, memungkinkan pengguna berpindah antar halaman dengan mudah. Dengan menggunakan hierarchy ini, aplikasi memiliki struktur yang konsisten: setiap halaman memiliki AppBar dengan judul yang relevan dan drawer yang sama, sehingga user experience menjadi lebih intuitif dan terorganisir.
+
+### 3. Dalam konteks desain antarmuka, apa kelebihan menggunakan layout widget seperti `Padding`, `SingleChildScrollView`, dan `ListView` saat menampilkan elemen-elemen form? Berikan contoh penggunaannya dari aplikasi kamu.
+
+Layout widget seperti `Padding` memberikan ruang antar elemen untuk menghindari tampilan yang terlalu padat dan meningkatkan readability. `SingleChildScrollView` memungkinkan form dapat di-scroll jika konten melebihi tinggi layar, sehingga semua field tetap dapat diakses di device dengan layar kecil. `ListView` bisa digunakan untuk menampilkan daftar item dalam bentuk scrollable, namun dalam form ini belum digunakan. Pada aplikasi Football Shop, `Padding` digunakan di sekitar form untuk memberikan margin dari tepi layar, `SingleChildScrollView` membungkus `Column` form agar dapat di-scroll, dan `SizedBox` digunakan untuk memberikan jarak vertikal antar field input.
+
+### 4. Bagaimana kamu menyesuaikan warna tema agar aplikasi Football Shop memiliki identitas visual yang konsisten dengan brand toko?
+
+Tema aplikasi disesuaikan dengan menggunakan `ThemeData` dengan `ColorScheme.fromSeed(seedColor: Colors.deepPurple)`, yang memberikan palet warna yang konsisten berdasarkan warna utama deep purple. `AppBar` menggunakan `Theme.of(context).colorScheme.primary` untuk warna background, sementara tombol-tombol menggunakan warna spesifik seperti biru, hijau, dan merah untuk membedakan fungsi masing-masing. Drawer header juga menggunakan `Colors.deepPurple` untuk konsistensi. Pendekatan ini memastikan semua elemen visual terintegrasi dengan brand football bidding yang sporty dan modern.
